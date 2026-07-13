@@ -9,20 +9,35 @@
     gtag('js', new Date());
     gtag('config', 'AW-18309499831');
   </script>
-  <!-- Event snippet for Purchase conversion page -->
+  <!-- Conversion: fires when a visitor clicks through to the official store (NOT on page load) -->
   <script>
-    gtag('event', 'conversion', {
-      'send_to': 'AW-18309499831/05DFCOCpn80cELeX05pE',
-      'transaction_id': ''
+    function gtagReportOutbound(){
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18309499831/05DFCOCpn80cELeX05pE',
+        'transaction_id': ''
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('a[href*="pronailcomplex24.com/text.php"]').forEach(function(a){
+        a.addEventListener('click', gtagReportOutbound);
+      });
     });
   </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ProNail Complex™ — The Mist Spray That Supports Healthy Toenails</title>
 <meta name="description" content="ProNail Complex is a doctor-formulated mist spray with 16 potent natural oils and vitamins that support healthy, strong toenails. Backed by a 60-day money-back guarantee.">
+<link rel="canonical" href="https://superdealrush.com/pronailcomplex/">
+<meta property="og:title" content="ProNail Complex™ — The Mist Spray That Supports Healthy Toenails">
+<meta property="og:description" content="Doctor-formulated mist spray with 16 natural oils and vitamins that support healthy, strong toenails. 60-day money-back guarantee.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://superdealrush.com/pronailcomplex/">
+<meta property="og:image" content="https://pronailcomplex24.com/statics/img/tsl-main.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💅</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://pronailcomplex24.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --charcoal:#1e1e1e;
@@ -72,7 +87,7 @@
   .hero::before{width:220px;height:220px;top:8%;left:38%}
   .hero::after{width:120px;height:120px;bottom:14%;left:10%}
   .hero-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:30px;align-items:center;position:relative;z-index:2}
-  .hero-bottle{filter:drop-shadow(0 24px 40px rgba(0,0,0,.28));max-width:420px;margin:0 auto}
+  .hero-bottle{filter:drop-shadow(0 24px 40px rgba(0,0,0,.28));max-width:420px;margin:0 auto;width:100%;aspect-ratio:1/1;object-fit:contain}
   .hero h1 em{font-style:normal;color:#fff9d6}
   .hero .lead{font-size:1.18rem;color:#eef7f9;margin:20px 0 26px;max-width:560px}
   .hero .checks{list-style:none;margin:0 0 28px}
@@ -206,9 +221,9 @@
       <li><a href="#ingredients">Ingredients</a></li>
       <li><a href="#benefits">Benefits</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a class="order" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">Order Now</a></li>
+      <li><a class="order" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">Order Now</a></li>
     </ul>
-    <a class="order desktop-hide" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">Order</a>
+    <a class="order desktop-hide" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">Order</a>
   </div>
 </nav>
 
@@ -216,7 +231,7 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <img class="hero-bottle" src="https://pronailcomplex24.com/statics/img/tsl-main.png" alt="ProNail Complex mist spray bottle with natural ingredients">
+      <img class="hero-bottle" src="https://pronailcomplex24.com/statics/img/tsl-main.png" alt="ProNail Complex mist spray bottle with natural ingredients" fetchpriority="high" decoding="async">
     </div>
     <div>
       <div class="rating"><span class="st">★★★★★</span> Rated 4.8/5 by 14,369+ customers</div>
@@ -227,7 +242,7 @@
         <li>Doctor-formulated, fast-absorbing mist spray</li>
         <li>Non-GMO · No stimulants · Made in the USA</li>
       </ul>
-      <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">👉 Order ProNail Complex Now</a>
+      <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">👉 Order ProNail Complex Now</a>
       <span class="btn-note" style="color:#eef7f9">✅ Protected by a 60-day money-back guarantee</span>
     </div>
   </div>
@@ -236,7 +251,7 @@
 <!-- TRUST STRIP -->
 <div class="trust">
   <div class="wrap">
-    <img src="https://pronailcomplex24.com/statics/img/certifications_new.png" alt="GMP Certified, FDA Registered Facility, 100% Natural, Made in USA, GMO Free">
+    <img src="https://pronailcomplex24.com/statics/img/certifications_new.png" alt="GMP Certified, FDA Registered Facility, 100% Natural, Made in USA, GMO Free" decoding="async">
   </div>
 </div>
 
@@ -274,22 +289,22 @@
     <h2 class="center">16 Powerful Natural Ingredients</h2>
     <p class="lead-sub">A carefully balanced blend of plant oils, vitamins, and nutrients — chosen to support healthy nails and skin.</p>
     <div class="ing-grid">
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient1.png" alt="Mineral Oil"><p>Mineral Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient2.png" alt="Sweet Almond Oil"><p>Sweet Almond Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient3.png" alt="Organic Flaxseed Oil"><p>Organic Flaxseed Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient4.png" alt="Tea Tree Oil"><p>Tea Tree Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient5.png" alt="Aloe Vera"><p>Aloe Vera</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient6.png" alt="Canola Oil"><p>Canola Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient7.png" alt="Vitamin E"><p>Vitamin E</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient8.png" alt="Walnut Oil"><p>Walnut Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient9.png" alt="Camphor Oil"><p>Camphor Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient10.png" alt="Clove Bud Oil"><p>Clove Bud Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient11.png" alt="Jojoba Oil"><p>Jojoba Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient12.png" alt="Chia Oil"><p>Chia Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient13.png" alt="Lemongrass Oil"><p>Lemongrass Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient14.png" alt="Lavender Oil"><p>Lavender Oil</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient15.png" alt="Menthol"><p>Menthol</p></div>
-      <div class="ing"><img src="https://pronailcomplex24.com/statics/img/ingredient16.png" alt="Undecylenic Acid"><p>Undecylenic Acid</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient1.png" alt="Mineral Oil"><p>Mineral Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient2.png" alt="Sweet Almond Oil"><p>Sweet Almond Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient3.png" alt="Organic Flaxseed Oil"><p>Organic Flaxseed Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient4.png" alt="Tea Tree Oil"><p>Tea Tree Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient5.png" alt="Aloe Vera"><p>Aloe Vera</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient6.png" alt="Canola Oil"><p>Canola Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient7.png" alt="Vitamin E"><p>Vitamin E</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient8.png" alt="Walnut Oil"><p>Walnut Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient9.png" alt="Camphor Oil"><p>Camphor Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient10.png" alt="Clove Bud Oil"><p>Clove Bud Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient11.png" alt="Jojoba Oil"><p>Jojoba Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient12.png" alt="Chia Oil"><p>Chia Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient13.png" alt="Lemongrass Oil"><p>Lemongrass Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient14.png" alt="Lavender Oil"><p>Lavender Oil</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient15.png" alt="Menthol"><p>Menthol</p></div>
+      <div class="ing"><img loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/ingredient16.png" alt="Undecylenic Acid"><p>Undecylenic Acid</p></div>
     </div>
   </div>
 </section>
@@ -327,10 +342,11 @@
   <div class="wrap">
     <p class="eyebrow">Special Online Discount</p>
     <h2 class="center">Choose Your Package</h2>
+    <p class="center" style="margin:10px 0 6px;font-weight:700;color:var(--navy)"><span style="color:#ffb400;letter-spacing:2px">★★★★★</span> Rated 4.8/5 by 14,369+ customers</p>
     <p class="lead-sub">Stock up and save more — every order is protected by a 60-day money-back guarantee.</p>
     <div class="price-grid">
       <div class="plan">
-        <img class="pack" src="https://pronailcomplex24.com/statics/img/prod_2_bottle.png" alt="2 bottles of ProNail Complex">
+        <img class="pack" loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/prod_2_bottle.png" alt="2 bottles of ProNail Complex">
         <h3>2 Bottles</h3>
         <div class="supply">60-Day Supply</div>
         <div class="price">$79<small>/bottle</small></div>
@@ -339,11 +355,11 @@
           <li>2 bottles of ProNail Complex</li>
           <li>60-day money-back guarantee</li>
         </ul>
-        <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">Order Now</a>
+        <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">Order Now</a>
       </div>
       <div class="plan best">
         <div class="tag">⭐ BEST VALUE</div>
-        <img class="pack" src="https://pronailcomplex24.com/statics/img/fe_6_bottle.png" alt="6 bottles of ProNail Complex with free bonuses">
+        <img class="pack" loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/fe_6_bottle.png" alt="6 bottles of ProNail Complex with free bonuses">
         <h3>6 Bottles</h3>
         <div class="supply">180-Day Supply</div>
         <div class="price">$49<small>/bottle</small></div>
@@ -354,10 +370,10 @@
           <li>FREE US shipping</li>
           <li>60-day money-back guarantee</li>
         </ul>
-        <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">Order Now &amp; Save</a>
+        <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">Order Now &amp; Save</a>
       </div>
       <div class="plan">
-        <img class="pack" src="https://pronailcomplex24.com/statics/img/prod_3_bottle.png" alt="3 bottles of ProNail Complex">
+        <img class="pack" loading="lazy" decoding="async" src="https://pronailcomplex24.com/statics/img/prod_3_bottle.png" alt="3 bottles of ProNail Complex">
         <h3>3 Bottles</h3>
         <div class="supply">90-Day Supply</div>
         <div class="price">$69<small>/bottle</small></div>
@@ -367,9 +383,10 @@
           <li>FREE US shipping</li>
           <li>60-day money-back guarantee</li>
         </ul>
-        <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">Order Now</a>
+        <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">Order Now</a>
       </div>
     </div>
+    <p class="center" style="margin-top:26px;font-size:.92rem;color:var(--muted)">🔒 Secure encrypted checkout&nbsp;&nbsp;·&nbsp;&nbsp;✅ 60-day money-back guarantee&nbsp;&nbsp;·&nbsp;&nbsp;🚚 Fast shipping from the USA</p>
   </div>
 </section>
 
@@ -377,7 +394,7 @@
 <section class="guarantee">
   <div class="wrap">
     <div class="guar-box">
-      <img src="https://pronailcomplex24.com/statics/img/guarantee_badge.png" alt="60-day money-back guarantee badge">
+      <img src="https://pronailcomplex24.com/statics/img/guarantee_badge.png" alt="60-day money-back guarantee badge" loading="lazy" decoding="async">
       <div class="guar-text">
         <h2>Your Satisfaction, 100% Guaranteed</h2>
         <p>Try ProNail Complex™ completely risk-free. If you're not thrilled with your results within 60 days, simply reach out for a full, no-questions-asked refund. That's how confident we are you'll love it.</p>
@@ -404,7 +421,7 @@
   <div class="wrap">
     <h2>Give Your Nails the Support They Deserve</h2>
     <p>Join thousands who've made ProNail Complex™ part of their daily routine — backed by a 60-day money-back guarantee.</p>
-    <a class="btn" style="background:#fff;color:var(--coral)" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">👉 Claim Your Discount Today</a>
+    <a class="btn" style="background:#fff;color:var(--coral)" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">👉 Claim Your Discount Today</a>
     <span class="btn-note">Secure checkout · 60-day guarantee · Fast shipping</span>
   </div>
 </section>
@@ -412,12 +429,12 @@
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <img class="flogo" src="https://pronailcomplex24.com/statics/img/logo_white.png" alt="ProNail Complex">
+    <img class="flogo" src="https://pronailcomplex24.com/statics/img/logo_white.png" alt="ProNail Complex" loading="lazy" decoding="async">
     <p class="disclaimer"><strong>Disclaimer:</strong> These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Always consult your physician before starting any new supplement or health routine.</p>
     <p class="disclaimer" style="font-size:.8rem">This is an independent promotional page. As an affiliate, the owner of this page may earn a commission from qualifying purchases made through the links above, at no additional cost to you.</p>
     <div class="links">
-      <a href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">Official Website</a> ·
-      <a href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">Order Now</a>
+      <a href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">Official Website</a> ·
+      <a href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">Order Now</a>
     </div>
     <p class="copy">© 2026 ProNail Complex™. All rights reserved. All trademarks belong to their respective owners.</p>
   </div>
@@ -425,7 +442,7 @@
 
 <!-- STICKY MOBILE CTA -->
 <div class="sticky-cta">
-  <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="nofollow noopener">👉 Get ProNail Complex — Special Offer</a>
+  <a class="btn" href="https://pronailcomplex24.com/text.php#aff=vivianegon00" target="_blank" rel="sponsored nofollow noopener">👉 Get ProNail Complex — Special Offer</a>
 </div>
 
 </body>
