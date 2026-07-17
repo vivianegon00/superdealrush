@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/pronailcomplex", "destination": "/idrotherapy/", "permanent": true },
+    { "source": "/pronailcomplex/(.*)", "destination": "/idrotherapy/", "permanent": true }
+  ]
+}
