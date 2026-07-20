@@ -1,5 +1,7 @@
 {
   "redirects": [
+    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/pronailcomplex", "destination": "/idrotherapy/", "permanent": true },
     { "source": "/pronailcomplex/(.*)", "destination": "/idrotherapy/", "permanent": true },
     { "source": "/go/idrotherapy-1", "destination": "https://www.checkout-ds24.com/product/629807?aff=vivianegon00", "permanent": false },
