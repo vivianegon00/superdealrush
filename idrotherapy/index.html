@@ -39,7 +39,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="/idrotherapy/img/wrinkle-reducer-cream-product_1200x.jpg">
+<link rel="preload" as="image" href="/idrotherapy/img/hero-900.webp" type="image/webp" fetchpriority="high">
 <style>
   :root{
     --blue:#05b8ff;
@@ -54,7 +54,7 @@
     --shadow:0 10px 28px rgba(17,17,17,.10);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:auto}
   body{font-family:'Open Sans',Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
   .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
   h1,h2,h3{font-family:'Archivo',Arial,sans-serif;line-height:1.12;font-weight:800;letter-spacing:-.01em;color:var(--black)}
@@ -76,13 +76,18 @@
   .btn:hover{transform:translateY(-2px);background:var(--blue-dark)}
   .btn::after{content:" ›";font-weight:900}
   .btn-note{display:block;font-size:.9rem;font-weight:700;color:var(--muted);margin-top:12px}
+  .alt-link{display:inline-block;margin-left:18px;color:var(--blue-dark);font-weight:700;font-size:.95rem;text-decoration:underline;text-underline-offset:3px}
+  .alt-link:hover{color:var(--black)}
 
   /* Hero (V1 split limpo: white bg, headline left, photo card right, blue CTA) */
   .hero{background:#fff;padding:56px 0}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
   .hero h1{font-weight:800;font-size:clamp(2rem,4.2vw,2.75rem);line-height:1.15;letter-spacing:-.01em;color:var(--black)}
   .hero .kicker{font-family:'Archivo';font-weight:500;color:#333;font-size:clamp(1.05rem,2vw,1.2rem);letter-spacing:.05em;margin:14px 0 26px}
-  .hero-img{width:100%;aspect-ratio:1200/967;object-fit:cover;border-radius:18px;box-shadow:0 20px 44px rgba(0,0,0,.16)}
+  .hero-img{width:100%;aspect-ratio:1200/967;object-fit:cover;border-radius:18px;box-shadow:0 20px 44px rgba(0,0,0,.16);
+    /* LQIP: 24px blurred preview inlined so the hero is never an empty white box on first paint */
+    background-image:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAATABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDcuLqO3hMt1KkYz1NVV8Q6cAB9qSr97YWuoQeVPHuUcnnHNYD+H7JZlAtfl78n/GquBtQXMN3F5tuwkXONwNFJYR22mweXBEQucgE0UXCxY6Rt9aqyEt94k46UUUAV5iQQATRRRUjP/9k=");
+    background-size:cover;background-position:center}
   .hero-checks{background:#fff;border-bottom:1px solid var(--line);padding:26px 0}
   .checks{list-style:none;margin:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 34px}
   .checks li{display:flex;align-items:flex-start;gap:11px;font-weight:700;color:var(--ink);font-size:1rem}
@@ -154,11 +159,11 @@
   .plan .tag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-family:'Archivo';font-weight:800;font-size:.75rem;padding:6px 18px;border-radius:50px;white-space:nowrap;letter-spacing:.06em;text-transform:uppercase}
   .plan .pack{width:100%;max-width:230px;margin:8px auto 4px;aspect-ratio:470/220;object-fit:contain}
   .plan h3{font-size:1.35rem}
-  .plan .perjar{font-family:'Archivo';font-size:2.4rem;font-weight:900;color:var(--black);line-height:1;margin:10px 0 2px}
-  .plan .perjar small{font-size:1rem;font-weight:700;color:var(--muted)}
-  .plan .ship{color:var(--blue-dark);font-weight:700;font-size:.95rem;margin:4px 0 6px}
-  .plan .total{font-size:.92rem;color:var(--muted);margin:0 0 16px}
-  .plan .total s{opacity:.7}
+  .plan .total-price{font-family:'Archivo';font-size:2.6rem;font-weight:900;color:var(--black);line-height:1;margin:10px 0 4px}
+  .plan .breakdown{font-size:.9rem;color:var(--muted);margin:0 0 6px}
+  .plan .breakdown s{opacity:.7}
+  .plan .ship{color:var(--blue-dark);font-weight:700;font-size:.95rem;margin:0 0 16px}
+  .plan .ship.paid{color:var(--muted);font-weight:600}
   .plan .btn{width:100%;padding:15px 8px;font-size:.95rem;margin-top:auto}
 
   /* FAQ */
@@ -227,7 +232,7 @@
 <nav class="nav">
   <div class="wrap">
     <span class="logo">Idrotherapy</span>
-    <a class="order" href="#order">Get Idrotherapy Now</a>
+    <a class="order" data-affiliate href="/go/idrotherapy-3" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
   </div>
 </nav>
 
@@ -235,13 +240,17 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1>Your Beauty Essentials In A Single Jar</h1>
-      <p class="kicker">Cell Renewal Cream Tailored For Women Over 45</p>
-      <a class="btn" href="#order">Get Idrotherapy Now</a>
+      <h1>The Wrinkle Cream Made For Skin Over 45</h1>
+      <p class="kicker">Matrixyl® 3000 + Renovage® peptides in a single jar</p>
+      <a class="btn" data-affiliate href="/go/idrotherapy-3" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
+      <a class="alt-link" href="#order">or compare all 3 packages ↓</a>
       <p class="onetime">This is a one-time order. This is not a subscription.<br>Backed by the seller's 1-year money-back guarantee.</p>
     </div>
     <div>
-      <img class="hero-img" src="/idrotherapy/img/wrinkle-reducer-cream-product_1200x.jpg" alt="Idrotherapy Wrinkle Reducer jar on white silk" fetchpriority="high" decoding="async">
+      <picture>
+        <source srcset="/idrotherapy/img/hero-900.webp" type="image/webp">
+        <img class="hero-img" src="/idrotherapy/img/hero-900.jpg" width="900" height="725" alt="Idrotherapy Wrinkle Reducer jar on white silk" fetchpriority="high" decoding="async">
+      </picture>
     </div>
   </div>
 </header>
@@ -295,6 +304,44 @@
   </div>
 </section>
 
+<!-- PRICING (verified from the official page) -->
+<section class="pricing" id="order">
+  <div class="wrap">
+    <h2 class="center">Choose Your Package</h2>
+    <p class="lead-sub">One-time order — no subscription, no hidden rebills.</p>
+    <div class="price-grid">
+      <div class="plan">
+        <div class="tag" style="background:#8a99a3">Best value per jar</div>
+        <img class="pack" src="/idrotherapy/img/package_prod6.png" alt="6 jars of Idrotherapy" loading="lazy" decoding="async">
+        <h3>6 Jars</h3>
+        <div class="total-price">$149</div>
+        <div class="breakdown">Was <s>$630</s> · $25 per jar</div>
+        <div class="ship">✓ Free shipping</div>
+        <a class="btn" data-affiliate href="/go/idrotherapy-6" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
+      </div>
+      <div class="plan best">
+        <div class="tag">⭐ Most Popular</div>
+        <img class="pack" src="/idrotherapy/img/package_prod3b.png" alt="3 jars of Idrotherapy" loading="lazy" decoding="async">
+        <h3>3 Jars</h3>
+        <div class="total-price">$99</div>
+        <div class="breakdown">Was <s>$315</s> · $33 per jar</div>
+        <div class="ship">✓ Free shipping</div>
+        <a class="btn" data-affiliate href="/go/idrotherapy-3" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
+      </div>
+      <div class="plan">
+        <div class="tag" style="background:#8a99a3">Try it first</div>
+        <img class="pack" src="/idrotherapy/img/package_prod1.png" alt="1 jar of Idrotherapy" loading="lazy" decoding="async">
+        <h3>1 Jar</h3>
+        <div class="total-price">$70</div>
+        <div class="breakdown">Was <s>$105</s> · $60 + $10 shipping</div>
+        <div class="ship paid">Delivered price, all in</div>
+        <a class="btn" data-affiliate href="/go/idrotherapy-1" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
+      </div>
+    </div>
+    <p class="center" style="margin-top:26px;font-size:.92rem;color:var(--muted)">🔒 Secure encrypted checkout&nbsp;&nbsp;·&nbsp;&nbsp;💳 One-time payment&nbsp;&nbsp;·&nbsp;&nbsp;🛡️ Seller's 1-year money-back guarantee</p>
+  </div>
+</section>
+
 <!-- INGREDIENTS -->
 <section id="ingredients">
   <div class="wrap">
@@ -345,43 +392,6 @@
   </div>
 </section>
 
-<!-- PRICING (verified from the official page) -->
-<section class="pricing" id="order">
-  <div class="wrap">
-    <h2 class="center">Choose Your Package</h2>
-    <p class="lead-sub">One-time order — no subscription, no hidden rebills.</p>
-    <div class="price-grid">
-      <div class="plan best">
-        <div class="tag">⭐ Best Value</div>
-        <img class="pack" src="/idrotherapy/img/package_prod6.png" alt="6 jars of Idrotherapy" loading="lazy" decoding="async">
-        <h3>6 Jars</h3>
-        <div class="perjar">$25<small>/jar</small></div>
-        <div class="ship">+ FREE Shipping</div>
-        <div class="total">TOTAL: <s>$630</s> <strong>$149</strong></div>
-        <a class="btn" data-affiliate href="/go/idrotherapy-6" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
-      </div>
-      <div class="plan">
-        <div class="tag" style="background:#8a99a3">Most Popular</div>
-        <img class="pack" src="/idrotherapy/img/package_prod3b.png" alt="3 jars of Idrotherapy" loading="lazy" decoding="async">
-        <h3>3 Jars</h3>
-        <div class="perjar">$33<small>/jar</small></div>
-        <div class="ship">+ FREE Shipping</div>
-        <div class="total">TOTAL: <s>$315</s> <strong>$99</strong></div>
-        <a class="btn" data-affiliate href="/go/idrotherapy-3" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
-      </div>
-      <div class="plan">
-        <img class="pack" src="/idrotherapy/img/package_prod1.png" alt="1 jar of Idrotherapy" loading="lazy" decoding="async">
-        <h3>1 Jar</h3>
-        <div class="perjar">$50<small>/jar</small></div>
-        <div class="ship">+ $10 shipping</div>
-        <div class="total">TOTAL: <s>$105</s> <strong>$60</strong></div>
-        <a class="btn" data-affiliate href="/go/idrotherapy-1" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
-      </div>
-    </div>
-    <p class="center" style="margin-top:26px;font-size:.92rem;color:var(--muted)">🔒 Secure encrypted checkout&nbsp;&nbsp;·&nbsp;&nbsp;💳 One-time payment&nbsp;&nbsp;·&nbsp;&nbsp;🛡️ Seller's 1-year money-back guarantee</p>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="wrap" style="max-width:760px">
@@ -400,7 +410,7 @@
   <div class="wrap">
     <h2>Pamper Your Skin With The Best Nature And Science Have To Offer</h2>
     <p>A one-time order with secure checkout — and free shipping plus a free $70 Gua Sha on select packages.</p>
-    <a class="btn" href="#order">Get Idrotherapy Now</a>
+    <a class="btn" data-affiliate href="/go/idrotherapy-3" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
     <span class="btn-note">Secure checkout · One-time payment · Fast shipping</span>
   </div>
 </section>
@@ -422,7 +432,7 @@
 
 <!-- STICKY MOBILE CTA -->
 <div class="sticky-cta">
-  <a class="btn" href="#order">Get Idrotherapy Now</a>
+  <a class="btn" data-affiliate href="/go/idrotherapy-3" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
 </div>
 
 </body>
