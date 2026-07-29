@@ -84,7 +84,8 @@
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
   .hero h1{font-weight:800;font-size:clamp(2rem,4.2vw,2.75rem);line-height:1.15;letter-spacing:-.01em;color:var(--black)}
   .hero .kicker{font-family:'Archivo';font-weight:500;color:#333;font-size:clamp(1.05rem,2vw,1.2rem);letter-spacing:.05em;margin:14px 0 26px}
-  .hero-img{width:100%;aspect-ratio:1200/967;object-fit:cover;border-radius:18px;box-shadow:0 20px 44px rgba(0,0,0,.16);
+  .hero-pic{display:block;width:100%}
+  .hero-img{width:100%;height:auto;aspect-ratio:1200/967;object-fit:cover;border-radius:18px;box-shadow:0 20px 44px rgba(0,0,0,.16);
     /* LQIP: 24px blurred preview inlined so the hero is never an empty white box on first paint */
     background-image:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABMNDhEODBMRDxEVFBMXHTAfHRoaHToqLCMwRT1JR0Q9Q0FMVm1dTFFoUkFDX4JgaHF1e3x7SlyGkIV3j214e3b/2wBDARQVFR0ZHTgfHzh2T0NPdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnb/wAARCAATABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDcuLqO3hMt1KkYz1NVV8Q6cAB9qSr97YWuoQeVPHuUcnnHNYD+H7JZlAtfl78n/GquBtQXMN3F5tuwkXONwNFJYR22mweXBEQucgE0UXCxY6Rt9aqyEt94k46UUUAV5iQQATRRRUjP/9k=");
     background-size:cover;background-position:center}
@@ -247,9 +248,9 @@
       <p class="onetime">This is a one-time order. This is not a subscription.<br>Backed by the seller's 1-year money-back guarantee.</p>
     </div>
     <div>
-      <picture>
+      <picture class="hero-pic">
         <source srcset="/idrotherapy/img/hero-900.webp" type="image/webp">
-        <img class="hero-img" src="/idrotherapy/img/hero-900.jpg" width="900" height="725" alt="Idrotherapy Wrinkle Reducer jar on white silk" fetchpriority="high" decoding="async">
+        <img class="hero-img" src="/idrotherapy/img/hero-900.jpg" alt="Idrotherapy Wrinkle Reducer jar on white silk" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
