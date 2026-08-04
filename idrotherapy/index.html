@@ -463,12 +463,16 @@
     function update(){
       ticking = false;
       var pastHero = window.scrollY > 520;
-      var orderOnScreen = false;
+      /* Só esconde quando o bloco de preço DOMINA a tela (>45% da altura).
+         Checar "1px visível" escondia a barra por ~1.240px de rolagem,
+         porque #order (647px) é mais alto que a viewport. */
+      var orderDominates = false;
       if(order){
         var r = order.getBoundingClientRect();
-        orderOnScreen = r.top < window.innerHeight && r.bottom > 0;
+        var visible = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+        orderDominates = visible > 0 && (visible / window.innerHeight) > 0.45;
       }
-      bar.classList.toggle('is-visible', pastHero && !orderOnScreen);
+      bar.classList.toggle('is-visible', pastHero && !orderDominates);
     }
     window.addEventListener('scroll', function(){
       if(!ticking){ ticking = true; window.requestAnimationFrame(update); }
