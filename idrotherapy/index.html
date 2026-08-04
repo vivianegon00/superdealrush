@@ -182,9 +182,18 @@
   .final p{color:#c9d3d9;max-width:600px;margin:14px auto 28px}
   .final .btn-note{color:#9fb2bb}
 
-  /* Sticky mobile CTA */
-  .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:#fff;box-shadow:0 -6px 20px rgba(0,0,0,.14);padding:12px 16px;display:none;z-index:70}
+  /* Sticky CTA (mobile + desktop, aparece depois do hero) */
+  .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:#fff;box-shadow:0 -6px 20px rgba(0,0,0,.14);padding:12px 16px;display:block;z-index:70;transform:translateY(110%);transition:transform .25s ease;will-change:transform}
+  .sticky-cta.is-visible{transform:translateY(0)}
   .sticky-cta .btn{width:100%;padding:15px;font-size:.95rem}
+  @media(min-width:881px){
+    .sticky-cta{text-align:center;padding:10px 16px}
+    .sticky-cta .btn{width:auto;min-width:340px;padding:14px 36px}
+  }
+
+  /* CTA de meio de página */
+  .mid-cta{text-align:center;padding:52px 0 0}
+  .mid-cta .btn{padding:16px 40px}
 
   footer{background:#f5f8fa;color:var(--muted);padding:40px 0 120px;font-size:.85rem;border-top:1px solid var(--line)}
   footer .disclaimer{max-width:840px;margin:0 auto 14px;text-align:center;line-height:1.65}
@@ -204,7 +213,6 @@
     .press-row{gap:18px}
     .press-row img{height:20px}
     section{padding:44px 0}
-    .sticky-cta{display:block}
     footer{padding-bottom:96px}
   }
   @media(min-width:881px){.desktop-hide{display:none}}
@@ -364,6 +372,10 @@
       </div>
     </div>
   </div>
+  <div class="wrap mid-cta">
+    <a class="btn" data-affiliate href="/go/idrotherapy-3" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
+    <span class="btn-note">Most popular: 3 jars · $99 · Free shipping</span>
+  </div>
 </section>
 
 <!-- BENEFITS -->
@@ -404,6 +416,10 @@
     <details class="faq-item"><summary>What if it doesn't work for me?</summary><div class="ans">The seller offers an unconditional 1-year money-back guarantee — even if you've used up the entire jar, you can request a full refund. Details are confirmed at checkout.</div></details>
     <details class="faq-item"><summary>How fast is shipping?</summary><div class="ans">Orders are processed quickly. Shipping is free on the 3- and 6-jar packages; full delivery details are shown at checkout.</div></details>
   </div>
+  <div class="wrap mid-cta">
+    <a class="btn" data-affiliate href="/go/idrotherapy-3" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
+    <span class="btn-note">1-year money-back guarantee · One-time order, no subscription</span>
+  </div>
 </section>
 
 <!-- FINAL CTA -->
@@ -431,10 +447,36 @@
   </div>
 </footer>
 
-<!-- STICKY MOBILE CTA -->
+<!-- STICKY CTA (mobile + desktop) -->
 <div class="sticky-cta">
   <a class="btn" data-affiliate href="/go/idrotherapy-3" target="_blank" rel="sponsored nofollow noopener">Get Idrotherapy Now</a>
 </div>
+
+<script>
+  /* Mostra a barra fixa só depois que a pessoa passa do hero,
+     e esconde quando o bloco de preço (#order) está na tela. */
+  (function(){
+    var bar = document.querySelector('.sticky-cta');
+    var order = document.getElementById('order');
+    if(!bar) return;
+    var ticking = false;
+    function update(){
+      ticking = false;
+      var pastHero = window.scrollY > 520;
+      var orderOnScreen = false;
+      if(order){
+        var r = order.getBoundingClientRect();
+        orderOnScreen = r.top < window.innerHeight && r.bottom > 0;
+      }
+      bar.classList.toggle('is-visible', pastHero && !orderOnScreen);
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ ticking = true; window.requestAnimationFrame(update); }
+    }, {passive:true});
+    window.addEventListener('resize', update, {passive:true});
+    update();
+  })();
+</script>
 
 </body>
 </html>
