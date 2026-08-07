@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audifort — hero, rodada 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#14191c;--body:#39444a;--muted:#6b777e;--teal:#0d7d91;--teal-deep:#08606f;
+        --amber:#c2760a;--line:#e3e8ea;--line-strong:#c9d3d6}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',Arial,sans-serif;color:var(--body);background:#fff;line-height:1.68;font-size:17px}
+  .wrap-wide{width:100%;max-width:980px;margin:0 auto;padding:0 22px}
+  h1{font-family:'Fraunces',Georgia,serif;color:var(--ink);font-weight:700;line-height:1.14;letter-spacing:-.015em;font-size:clamp(1.9rem,4.4vw,2.9rem);margin-bottom:18px}
+  .lead{font-size:1.15rem;color:var(--muted);margin-bottom:26px}
+  svg{display:block}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--line-strong)}
+  .btn{display:inline-block;background:var(--teal);color:#fff;font-weight:600;text-decoration:none;padding:16px 32px;border-radius:10px;font-size:1.02rem;box-shadow:0 6px 20px rgba(13,125,145,.28);line-height:1.3}
+  .btn__sub{display:block;font-size:.8rem;font-weight:400;opacity:.86;margin-top:3px}
+  .btn-note{display:block;font-size:.84rem;color:var(--muted);margin-top:12px}
+  .vlabel{background:#14191c;color:#fff;padding:16px 0}
+  .vlabel .wrap-wide{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+  .vlabel b{font-family:'Fraunces',serif;font-size:1.25rem}
+  .vlabel span{font-size:.88rem;opacity:.72}
+  .vnote{background:#faf8f4;border-bottom:1px solid var(--line);padding:14px 0;font-size:.9rem;color:var(--muted)}
+  .replay{background:none;border:1px solid rgba(255,255,255,.35);color:#fff;font:inherit;font-size:.8rem;padding:5px 12px;border-radius:99px;cursor:pointer;margin-left:auto}
+  .replay:hover{background:rgba(255,255,255,.12)}
+  .hgrid{display:grid;gap:30px;padding:52px 0 56px}
+  @media(min-width:900px){.hgrid{grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}}
+
+  /* ===== E — tipografia protagonista ===== */
+  .vE .band{padding:66px 0 60px}
+  .vE .mega{font-family:'Fraunces',Georgia,serif;font-weight:900;color:var(--ink);
+    font-size:clamp(2.6rem,8.4vw,5.6rem);line-height:.98;letter-spacing:-.035em;margin-bottom:22px}
+  .vE .echo{position:relative;display:inline-block;color:var(--teal)}
+  .vE .echo i{position:absolute;left:0;top:0;font-style:normal;color:var(--teal);pointer-events:none}
+  .vE .echo i:nth-of-type(1){animation:ech 3.6s ease-out infinite}
+  .vE .echo i:nth-of-type(2){animation:ech 3.6s ease-out .35s infinite}
+  .vE .echo i:nth-of-type(3){animation:ech 3.6s ease-out .7s infinite}
+  @keyframes ech{0%{opacity:.5;transform:none}70%,100%{opacity:0;transform:translateX(26px) scaleX(1.04)}}
+  .vE .row{display:flex;flex-wrap:wrap;gap:34px;align-items:flex-end;margin-top:8px}
+  .vE .row .lead{flex:1 1 320px;max-width:48ch;margin-bottom:0}
+  .vE .shot{width:170px;height:auto;flex:0 0 auto;filter:drop-shadow(0 14px 24px rgba(12,50,58,.22))}
+  .vE .cta{margin-top:32px}
+
+  /* ===== F — audiograma clinico ===== */
+  .vF .panel{position:relative;margin:0;padding:22px 18px 12px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:0 3px 14px rgba(20,25,28,.05)}
+  .vF .cap{display:flex;justify-content:space-between;font-size:.72rem;color:#8b979c;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+  .vF .plotline{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 1.9s ease-out .2s forwards}
+  .vF .marks circle{opacity:0;animation:pop .4s ease-out both}
+  .vF .foot{font-size:.78rem;color:var(--muted);margin-top:8px;text-align:center}
+  .vF .shot{width:118px;height:auto;position:absolute;right:14px;top:-26px;filter:drop-shadow(0 12px 20px rgba(12,50,58,.24))}
+  @keyframes pop{to{opacity:1}}
+
+  /* ===== G — campo de partículas ===== */
+  .vG .panel{position:relative;margin:0;padding:24px 20px 16px;border-radius:18px;overflow:hidden;
+    background:linear-gradient(105deg,#fff8ee 0%,#f6fbfc 46%,#eef7f9 100%);border:1px solid #e6eef0}
+  .vG .field{width:100%}
+  .vG .dot{animation:din .7s ease-out both;animation-delay:var(--d)}
+  @keyframes din{from{opacity:0;transform:translateY(-8px)}}
+  .vG .shot{position:relative;z-index:1;width:100%;max-width:250px;height:auto;margin:-18px auto 0;filter:drop-shadow(0 16px 26px rgba(12,50,58,.24))}
+  .vG .cap{display:flex;justify-content:space-between;font-size:.75rem;color:#6d7d83;margin-top:12px}
+  .vG .cap b{color:#a8680f;font-weight:600}
+
+  /* ===== H — split diagonal ===== */
+  .vH .panel{position:relative;margin:0;border-radius:18px;overflow:hidden;border:1px solid #e0e9eb;background:#fff}
+  .vH .halves{position:relative;height:200px}
+  .vH .side{position:absolute;inset:0}
+  .vH .left{background:linear-gradient(135deg,#fff3e0 0%,#ffe9cf 100%);clip-path:polygon(0 0,58% 0,42% 100%,0 100%)}
+  .vH .right{background:linear-gradient(135deg,#eff8fa 0%,#e2f1f4 100%);clip-path:polygon(58% 0,100% 0,100% 100%,42% 100%)}
+  .vH svg.bars{position:absolute;inset:0;width:100%;height:100%}
+  .vH .shot{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);z-index:2;width:150px;height:auto;filter:drop-shadow(0 16px 26px rgba(12,50,58,.3))}
+  .vH .tags{display:flex;justify-content:space-between;padding:12px 18px 14px;font-size:.76rem;letter-spacing:.05em;text-transform:uppercase}
+  .vH .tags b{color:#a8680f}.vH .tags s{color:#0d7d91;text-decoration:none}
+
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .bar{transform-origin:center;animation:rise .6s cubic-bezier(.2,.9,.25,1) both;animation-delay:var(--d)}
+  @keyframes rise{from{transform:scaleY(.06);opacity:0}to{transform:scaleY(1)}}
+  .fadeup{animation:fadeup .8s ease-out .55s both}
+  @keyframes fadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){
+    .bar,.dot,.plotline,.fadeup,.vE .echo i,.vF .marks circle{animation:none!important;stroke-dashoffset:0!important;opacity:1!important;transform:none!important}
+    .vE .echo i{display:none}
+  }
+</style></head><body>
+<div class="vlabel"><div class="wrap-wide"><b>Opção E</b><span>Tipografia protagonista · a palavra ecoa</span><button class="replay" onclick="replay(this)">↻ rever animação</button></div></div><div class="vnote"><div class="wrap-wide">Sem painel, sem card. O título é o visual: "ringing" em teal com três cópias que ecoam pra direita e somem, em loop lento de 3,6s. O produto vira coadjuvante, pequeno na linha do lead. Cara de ensaio de revista — máxima credibilidade editorial.</div></div>
+<section class="vE"><div class="band wrap-wide">
+  <div class="eyebrow">Evidence review · August 2026</div>
+  <div class="mega">Vitamins for tinnitus:<br>what the research<br>says about the <span class="echo">ringing<i>ringing</i><i>ringing</i><i>ringing</i></span></div>
+  <div class="row">
+    <p class="lead">Four nutrients get recommended for ear ringing over and over. Only one of them has research worth taking seriously — and it's not the one on the front of most bottles.</p>
+    <img class="shot fadeup" src="img/prodx2-500.webp" width="350" height="256" alt="Audifort">
+  </div>
+  <div class="cta"><a class="btn" href="#">See the Audifort formula<span class="btn__sub">Full ingredient amounts on the official site</span></a><span class="btn-note">Opens in a new tab — this page stays open</span></div>
+</div></section>
+<div class="vlabel"><div class="wrap-wide"><b>Opção F</b><span>Audiograma clínico · o gráfico como prova</span><button class="replay" onclick="replay(this)">↻ rever animação</button></div></div><div class="vnote"><div class="wrap-wide">Um audiograma de verdade — frequência × decibéis, com a queda típica em altas frequências e a faixa crítica sombreada em âmbar. A linha se desenha em 1,9s e os pontos aparecem em sequência. É a opção que mais empurra "revisão de evidência" em vez de "página de venda".</div></div>
+<section class="vF"><div class="wrap-wide"><div class="hgrid">
+  <div><div class="eyebrow">Evidence review · August 2026</div><h1>Vitamins for tinnitus: what the research actually shows</h1><p class="lead">Four nutrients get recommended for ear ringing over and over. Only one of them has research worth taking seriously — and it's not the one on the front of most bottles.</p><a class="btn" href="#">See the Audifort formula<span class="btn__sub">Full ingredient amounts on the official site</span></a><span class="btn-note">Opens in a new tab — this page stays open</span></div>
+  <figure class="panel">
+    <div class="cap"><span>Hearing threshold</span><span>dB HL / Hz</span></div>
+    <img class="shot fadeup" src="img/prodx2-500.webp" width="350" height="256" alt="Audifort">
+    <svg viewBox="0 0 700 214" aria-hidden="true">
+        <line x1="70.0" y1="26" x2="70.0" y2="190" stroke="#e6edef" stroke-width="1"/>
+        <text x="70.0" y="206" font-size="10" fill="#9aa7ac" text-anchor="middle" font-family="Inter,Arial">250</text>
+        <line x1="152.9" y1="26" x2="152.9" y2="190" stroke="#e6edef" stroke-width="1"/>
+        <text x="152.9" y="206" font-size="10" fill="#9aa7ac" text-anchor="middle" font-family="Inter,Arial">500</text>
+        <line x1="235.7" y1="26" x2="235.7" y2="190" stroke="#e6edef" stroke-width="1"/>
+        <text x="235.7" y="206" font-size="10" fill="#9aa7ac" text-anchor="middle" font-family="Inter,Arial">1k</text>
+        <line x1="318.6" y1="26" x2="318.6" y2="190" stroke="#e6edef" stroke-width="1"/>
+        <text x="318.6" y="206" font-size="10" fill="#9aa7ac" text-anchor="middle" font-family="Inter,Arial">2k</text>
+        <line x1="401.4" y1="26" x2="401.4" y2="190" stroke="#e6edef" stroke-width="1"/>
+        <text x="401.4" y="206" font-size="10" fill="#9aa7ac" text-anchor="middle" font-family="Inter,Arial">3k</text>
+        <line x1="484.3" y1="26" x2="484.3" y2="190" stroke="#e6edef" stroke-width="1"/>
+        <text x="484.3" y="206" font-size="10" fill="#9aa7ac" text-anchor="middle" font-family="Inter,Arial">4k</text>
+        <line x1="567.1" y1="26" x2="567.1" y2="190" stroke="#e6edef" stroke-width="1"/>
+        <text x="567.1" y="206" font-size="10" fill="#9aa7ac" text-anchor="middle" font-family="Inter,Arial">6k</text>
+        <line x1="650.0" y1="26" x2="650.0" y2="190" stroke="#e6edef" stroke-width="1"/>
+        <text x="650.0" y="206" font-size="10" fill="#9aa7ac" text-anchor="middle" font-family="Inter,Arial">8k</text>
+        <line x1="70" y1="26.0" x2="650" y2="26.0" stroke="#eef3f4" stroke-width="1"/>
+        <text x="61" y="29.0" font-size="10" fill="#9aa7ac" text-anchor="end" font-family="Inter,Arial">0</text>
+        <line x1="70" y1="53.3" x2="650" y2="53.3" stroke="#eef3f4" stroke-width="1"/>
+        <text x="61" y="56.3" font-size="10" fill="#9aa7ac" text-anchor="end" font-family="Inter,Arial">15</text>
+        <line x1="70" y1="80.7" x2="650" y2="80.7" stroke="#eef3f4" stroke-width="1"/>
+        <text x="61" y="83.7" font-size="10" fill="#9aa7ac" text-anchor="end" font-family="Inter,Arial">30</text>
+        <line x1="70" y1="108.0" x2="650" y2="108.0" stroke="#eef3f4" stroke-width="1"/>
+        <text x="61" y="111.0" font-size="10" fill="#9aa7ac" text-anchor="end" font-family="Inter,Arial">45</text>
+        <line x1="70" y1="135.3" x2="650" y2="135.3" stroke="#eef3f4" stroke-width="1"/>
+        <text x="61" y="138.3" font-size="10" fill="#9aa7ac" text-anchor="end" font-family="Inter,Arial">60</text>
+        <line x1="70" y1="162.7" x2="650" y2="162.7" stroke="#eef3f4" stroke-width="1"/>
+        <text x="61" y="165.7" font-size="10" fill="#9aa7ac" text-anchor="end" font-family="Inter,Arial">75</text>
+        <line x1="70" y1="190.0" x2="650" y2="190.0" stroke="#eef3f4" stroke-width="1"/>
+        <text x="61" y="193.0" font-size="10" fill="#9aa7ac" text-anchor="end" font-family="Inter,Arial">90</text>
+        <rect x="401.4" y="26.0" width="248.6" height="164.0" fill="#c2760a" opacity=".07"/>
+        <polyline class="plotline" points="70.0,44.2 152.9,47.9 235.7,53.3 318.6,71.6 401.4,95.2 484.3,120.8 567.1,131.7 650.0,139.0" fill="none" stroke="#0d7d91" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <g class="marks"><circle cx="70.0" cy="44.2" r="3.6" fill="#fff" stroke="#0d7d91" stroke-width="2"/><circle cx="152.9" cy="47.9" r="3.6" fill="#fff" stroke="#0d7d91" stroke-width="2"/><circle cx="235.7" cy="53.3" r="3.6" fill="#fff" stroke="#0d7d91" stroke-width="2"/><circle cx="318.6" cy="71.6" r="3.6" fill="#fff" stroke="#0d7d91" stroke-width="2"/><circle cx="401.4" cy="95.2" r="3.6" fill="#fff" stroke="#0d7d91" stroke-width="2"/><circle cx="484.3" cy="120.8" r="3.6" fill="#fff" stroke="#0d7d91" stroke-width="2"/><circle cx="567.1" cy="131.7" r="3.6" fill="#fff" stroke="#0d7d91" stroke-width="2"/><circle cx="650.0" cy="139.0" r="3.6" fill="#fff" stroke="#0d7d91" stroke-width="2"/></g>
+    </svg>
+    <div class="foot">Typical age-related loss — the range where ringing is most often reported</div>
+  </figure>
+</div></div></section>
+<div class="vlabel"><div class="wrap-wide"><b>Opção G</b><span>Campo de partículas · ruído virando calma</span><button class="replay" onclick="replay(this)">↻ rever animação</button></div></div><div class="vnote"><div class="wrap-wide">210 pontos: densos, grandes e caóticos à esquerda em âmbar; esparsos, pequenos e alinhados à direita em teal. Entram em cascata da esquerda pra direita. Abstrato — comunica ruído → calma sem literalidade nenhuma, e é o mais bonito dos oito.</div></div>
+<section class="vG"><div class="wrap-wide"><div class="hgrid">
+  <div><div class="eyebrow">Evidence review · August 2026</div><h1>Vitamins for tinnitus: what the research actually shows</h1><p class="lead">Four nutrients get recommended for ear ringing over and over. Only one of them has research worth taking seriously — and it's not the one on the front of most bottles.</p><a class="btn" href="#">See the Audifort formula<span class="btn__sub">Full ingredient amounts on the official site</span></a><span class="btn-note">Opens in a new tab — this page stays open</span></div>
+  <figure class="panel">
+    <svg class="field" viewBox="0 0 680 180" aria-hidden="true">
+          <circle class="dot" style="--d:0.0s" cx="24.0" cy="81.7" r="3.0" fill="#c2760a" opacity="0.95"/>
+          <circle class="dot" style="--d:0.01s" cx="30.7" cy="106.2" r="3.0" fill="#c2760a" opacity="0.94"/>
+          <circle class="dot" style="--d:0.017s" cx="36.1" cy="83.0" r="2.9" fill="#c2760a" opacity="0.93"/>
+          <circle class="dot" style="--d:0.024s" cx="41.1" cy="80.5" r="2.9" fill="#c2760a" opacity="0.92"/>
+          <circle class="dot" style="--d:0.031s" cx="45.8" cy="62.5" r="2.8" fill="#c2760a" opacity="0.91"/>
+          <circle class="dot" style="--d:0.038s" cx="50.4" cy="83.8" r="2.8" fill="#c2760a" opacity="0.9"/>
+          <circle class="dot" style="--d:0.044s" cx="54.8" cy="121.6" r="2.8" fill="#c2760a" opacity="0.89"/>
+          <circle class="dot" style="--d:0.05s" cx="59.1" cy="101.8" r="2.8" fill="#c2760a" opacity="0.89"/>
+          <circle class="dot" style="--d:0.056s" cx="63.3" cy="118.3" r="2.7" fill="#c2760a" opacity="0.88"/>
+          <circle class="dot" style="--d:0.062s" cx="67.4" cy="96.7" r="2.7" fill="#c2760a" opacity="0.87"/>
+          <circle class="dot" style="--d:0.068s" cx="71.5" cy="100.4" r="2.7" fill="#c2760a" opacity="0.86"/>
+          <circle class="dot" style="--d:0.073s" cx="75.5" cy="94.8" r="2.7" fill="#c2760a" opacity="0.86"/>
+          <circle class="dot" style="--d:0.079s" cx="79.5" cy="47.7" r="2.6" fill="#c2760a" opacity="0.85"/>
+          <circle class="dot" style="--d:0.085s" cx="83.4" cy="111.4" r="2.6" fill="#c2760a" opacity="0.84"/>
+          <circle class="dot" style="--d:0.09s" cx="87.2" cy="102.4" r="2.6" fill="#c2760a" opacity="0.84"/>
+          <circle class="dot" style="--d:0.096s" cx="91.1" cy="102.0" r="2.6" fill="#c2760a" opacity="0.83"/>
+          <circle class="dot" style="--d:0.101s" cx="94.8" cy="49.9" r="2.5" fill="#c2760a" opacity="0.83"/>
+          <circle class="dot" style="--d:0.106s" cx="98.6" cy="49.3" r="2.5" fill="#c2760a" opacity="0.82"/>
+          <circle class="dot" style="--d:0.112s" cx="102.3" cy="69.6" r="2.5" fill="#c2760a" opacity="0.81"/>
+          <circle class="dot" style="--d:0.117s" cx="106.0" cy="79.4" r="2.5" fill="#c2760a" opacity="0.81"/>
+          <circle class="dot" style="--d:0.122s" cx="109.6" cy="96.8" r="2.4" fill="#c2760a" opacity="0.8"/>
+          <circle class="dot" style="--d:0.127s" cx="113.3" cy="89.0" r="2.4" fill="#c2760a" opacity="0.8"/>
+          <circle class="dot" style="--d:0.132s" cx="116.9" cy="101.2" r="2.4" fill="#c2760a" opacity="0.79"/>
+          <circle class="dot" style="--d:0.137s" cx="120.4" cy="76.4" r="2.4" fill="#c2760a" opacity="0.79"/>
+          <circle class="dot" style="--d:0.142s" cx="124.0" cy="96.4" r="2.4" fill="#c2760a" opacity="0.78"/>
+          <circle class="dot" style="--d:0.147s" cx="127.5" cy="98.1" r="2.3" fill="#0d7d91" opacity="0.77"/>
+          <circle class="dot" style="--d:0.152s" cx="131.0" cy="76.6" r="2.3" fill="#0d7d91" opacity="0.77"/>
+          <circle class="dot" style="--d:0.157s" cx="134.5" cy="124.2" r="2.3" fill="#0d7d91" opacity="0.76"/>
+          <circle class="dot" style="--d:0.162s" cx="138.0" cy="100.9" r="2.3" fill="#0d7d91" opacity="0.76"/>
+          <circle class="dot" style="--d:0.167s" cx="141.5" cy="113.1" r="2.3" fill="#0d7d91" opacity="0.75"/>
+          <circle class="dot" style="--d:0.172s" cx="144.9" cy="78.2" r="2.3" fill="#0d7d91" opacity="0.75"/>
+          <circle class="dot" style="--d:0.177s" cx="148.3" cy="76.2" r="2.2" fill="#0d7d91" opacity="0.74"/>
+          <circle class="dot" style="--d:0.182s" cx="151.7" cy="83.7" r="2.2" fill="#0d7d91" opacity="0.74"/>
+          <circle class="dot" style="--d:0.187s" cx="155.1" cy="88.1" r="2.2" fill="#0d7d91" opacity="0.73"/>
+          <circle class="dot" style="--d:0.191s" cx="158.5" cy="101.3" r="2.2" fill="#0d7d91" opacity="0.73"/>
+          <circle class="dot" style="--d:0.196s" cx="161.8" cy="94.4" r="2.2" fill="#0d7d91" opacity="0.72"/>
+          <circle class="dot" style="--d:0.201s" cx="165.2" cy="82.2" r="2.1" fill="#0d7d91" opacity="0.72"/>
+          <circle class="dot" style="--d:0.206s" cx="168.5" cy="73.6" r="2.1" fill="#0d7d91" opacity="0.71"/>
+          <circle class="dot" style="--d:0.21s" cx="171.8" cy="81.2" r="2.1" fill="#0d7d91" opacity="0.71"/>
+          <circle class="dot" style="--d:0.215s" cx="175.1" cy="110.3" r="2.1" fill="#0d7d91" opacity="0.7"/>
+          <circle class="dot" style="--d:0.22s" cx="178.4" cy="76.8" r="2.1" fill="#0d7d91" opacity="0.7"/>
+          <circle class="dot" style="--d:0.225s" cx="181.7" cy="94.0" r="2.1" fill="#0d7d91" opacity="0.7"/>
+          <circle class="dot" style="--d:0.229s" cx="184.9" cy="96.8" r="2.0" fill="#0d7d91" opacity="0.69"/>
+          <circle class="dot" style="--d:0.234s" cx="188.2" cy="66.6" r="2.0" fill="#0d7d91" opacity="0.69"/>
+          <circle class="dot" style="--d:0.238s" cx="191.4" cy="90.8" r="2.0" fill="#0d7d91" opacity="0.68"/>
+          <circle class="dot" style="--d:0.243s" cx="194.6" cy="109.9" r="2.0" fill="#0d7d91" opacity="0.68"/>
+          <circle class="dot" style="--d:0.248s" cx="197.9" cy="59.7" r="2.0" fill="#0d7d91" opacity="0.67"/>
+          <circle class="dot" style="--d:0.252s" cx="201.1" cy="85.2" r="2.0" fill="#0d7d91" opacity="0.67"/>
+          <circle class="dot" style="--d:0.257s" cx="204.3" cy="88.4" r="2.0" fill="#0d7d91" opacity="0.67"/>
+          <circle class="dot" style="--d:0.261s" cx="207.4" cy="78.2" r="1.9" fill="#0d7d91" opacity="0.66"/>
+          <circle class="dot" style="--d:0.266s" cx="210.6" cy="97.1" r="1.9" fill="#0d7d91" opacity="0.66"/>
+          <circle class="dot" style="--d:0.27s" cx="213.8" cy="89.1" r="1.9" fill="#0d7d91" opacity="0.65"/>
+          <circle class="dot" style="--d:0.275s" cx="216.9" cy="69.7" r="1.9" fill="#0d7d91" opacity="0.65"/>
+          <circle class="dot" style="--d:0.279s" cx="220.1" cy="101.3" r="1.9" fill="#0d7d91" opacity="0.64"/>
+          <circle class="dot" style="--d:0.284s" cx="223.2" cy="99.0" r="1.9" fill="#0d7d91" opacity="0.64"/>
+          <circle class="dot" style="--d:0.288s" cx="226.4" cy="102.6" r="1.9" fill="#0d7d91" opacity="0.64"/>
+          <circle class="dot" style="--d:0.293s" cx="229.5" cy="108.9" r="1.8" fill="#0d7d91" opacity="0.63"/>
+          <circle class="dot" style="--d:0.297s" cx="232.6" cy="94.7" r="1.8" fill="#0d7d91" opacity="0.63"/>
+          <circle class="dot" style="--d:0.301s" cx="235.7" cy="91.5" r="1.8" fill="#0d7d91" opacity="0.62"/>
+          <circle class="dot" style="--d:0.306s" cx="238.8" cy="73.7" r="1.8" fill="#0d7d91" opacity="0.62"/>
+          <circle class="dot" style="--d:0.31s" cx="241.9" cy="97.6" r="1.8" fill="#0d7d91" opacity="0.62"/>
+          <circle class="dot" style="--d:0.315s" cx="245.0" cy="82.5" r="1.8" fill="#0d7d91" opacity="0.61"/>
+          <circle class="dot" style="--d:0.319s" cx="248.1" cy="84.5" r="1.8" fill="#0d7d91" opacity="0.61"/>
+          <circle class="dot" style="--d:0.323s" cx="251.1" cy="74.9" r="1.7" fill="#0d7d91" opacity="0.61"/>
+          <circle class="dot" style="--d:0.328s" cx="254.2" cy="78.6" r="1.7" fill="#0d7d91" opacity="0.6"/>
+          <circle class="dot" style="--d:0.332s" cx="257.2" cy="83.8" r="1.7" fill="#0d7d91" opacity="0.6"/>
+          <circle class="dot" style="--d:0.336s" cx="260.3" cy="104.8" r="1.7" fill="#0d7d91" opacity="0.6"/>
+          <circle class="dot" style="--d:0.341s" cx="263.3" cy="67.0" r="1.7" fill="#0d7d91" opacity="0.59"/>
+          <circle class="dot" style="--d:0.345s" cx="266.4" cy="73.7" r="1.7" fill="#0d7d91" opacity="0.59"/>
+          <circle class="dot" style="--d:0.349s" cx="269.4" cy="92.6" r="1.7" fill="#0d7d91" opacity="0.58"/>
+          <circle class="dot" style="--d:0.354s" cx="272.4" cy="105.7" r="1.7" fill="#0d7d91" opacity="0.58"/>
+          <circle class="dot" style="--d:0.358s" cx="275.4" cy="96.2" r="1.7" fill="#0d7d91" opacity="0.58"/>
+          <circle class="dot" style="--d:0.362s" cx="278.4" cy="69.9" r="1.6" fill="#0d7d91" opacity="0.57"/>
+          <circle class="dot" style="--d:0.367s" cx="281.4" cy="63.6" r="1.6" fill="#0d7d91" opacity="0.57"/>
+          <circle class="dot" style="--d:0.371s" cx="284.4" cy="93.7" r="1.6" fill="#0d7d91" opacity="0.57"/>
+          <circle class="dot" style="--d:0.375s" cx="287.4" cy="82.5" r="1.6" fill="#0d7d91" opacity="0.56"/>
+          <circle class="dot" style="--d:0.379s" cx="290.4" cy="78.7" r="1.6" fill="#0d7d91" opacity="0.56"/>
+          <circle class="dot" style="--d:0.384s" cx="293.4" cy="99.7" r="1.6" fill="#0d7d91" opacity="0.56"/>
+          <circle class="dot" style="--d:0.388s" cx="296.3" cy="100.8" r="1.6" fill="#0d7d91" opacity="0.55"/>
+          <circle class="dot" style="--d:0.392s" cx="299.3" cy="91.5" r="1.6" fill="#0d7d91" opacity="0.55"/>
+          <circle class="dot" style="--d:0.396s" cx="302.3" cy="92.4" r="1.5" fill="#0d7d91" opacity="0.55"/>
+          <circle class="dot" style="--d:0.4s" cx="305.2" cy="94.1" r="1.5" fill="#0d7d91" opacity="0.54"/>
+          <circle class="dot" style="--d:0.405s" cx="308.2" cy="104.9" r="1.5" fill="#0d7d91" opacity="0.54"/>
+          <circle class="dot" style="--d:0.409s" cx="311.1" cy="95.7" r="1.5" fill="#0d7d91" opacity="0.54"/>
+          <circle class="dot" style="--d:0.413s" cx="314.0" cy="94.7" r="1.5" fill="#0d7d91" opacity="0.54"/>
+          <circle class="dot" style="--d:0.417s" cx="317.0" cy="94.9" r="1.5" fill="#0d7d91" opacity="0.53"/>
+          <circle class="dot" style="--d:0.421s" cx="319.9" cy="76.1" r="1.5" fill="#0d7d91" opacity="0.53"/>
+          <circle class="dot" style="--d:0.426s" cx="322.8" cy="101.2" r="1.5" fill="#0d7d91" opacity="0.53"/>
+          <circle class="dot" style="--d:0.43s" cx="325.7" cy="98.3" r="1.5" fill="#0d7d91" opacity="0.52"/>
+          <circle class="dot" style="--d:0.434s" cx="328.7" cy="94.5" r="1.5" fill="#0d7d91" opacity="0.52"/>
+          <circle class="dot" style="--d:0.438s" cx="331.6" cy="73.3" r="1.4" fill="#0d7d91" opacity="0.52"/>
+          <circle class="dot" style="--d:0.442s" cx="334.5" cy="84.7" r="1.4" fill="#0d7d91" opacity="0.51"/>
+          <circle class="dot" style="--d:0.446s" cx="337.4" cy="96.9" r="1.4" fill="#0d7d91" opacity="0.51"/>
+          <circle class="dot" style="--d:0.45s" cx="340.3" cy="75.2" r="1.4" fill="#0d7d91" opacity="0.51"/>
+          <circle class="dot" style="--d:0.454s" cx="343.1" cy="88.5" r="1.4" fill="#0d7d91" opacity="0.51"/>
+          <circle class="dot" style="--d:0.459s" cx="346.0" cy="98.1" r="1.4" fill="#0d7d91" opacity="0.5"/>
+          <circle class="dot" style="--d:0.463s" cx="348.9" cy="79.7" r="1.4" fill="#0d7d91" opacity="0.5"/>
+          <circle class="dot" style="--d:0.467s" cx="351.8" cy="102.5" r="1.4" fill="#0d7d91" opacity="0.5"/>
+          <circle class="dot" style="--d:0.471s" cx="354.7" cy="94.2" r="1.4" fill="#0d7d91" opacity="0.49"/>
+          <circle class="dot" style="--d:0.475s" cx="357.5" cy="88.9" r="1.4" fill="#0d7d91" opacity="0.49"/>
+          <circle class="dot" style="--d:0.479s" cx="360.4" cy="92.4" r="1.4" fill="#0d7d91" opacity="0.49"/>
+          <circle class="dot" style="--d:0.483s" cx="363.2" cy="94.8" r="1.3" fill="#0d7d91" opacity="0.49"/>
+          <circle class="dot" style="--d:0.487s" cx="366.1" cy="90.9" r="1.3" fill="#0d7d91" opacity="0.48"/>
+          <circle class="dot" style="--d:0.491s" cx="368.9" cy="98.3" r="1.3" fill="#0d7d91" opacity="0.48"/>
+          <circle class="dot" style="--d:0.495s" cx="371.8" cy="85.3" r="1.3" fill="#7fb4bf" opacity="0.48"/>
+          <circle class="dot" style="--d:0.499s" cx="374.6" cy="87.1" r="1.3" fill="#7fb4bf" opacity="0.47"/>
+          <circle class="dot" style="--d:0.503s" cx="377.5" cy="97.3" r="1.3" fill="#7fb4bf" opacity="0.47"/>
+          <circle class="dot" style="--d:0.507s" cx="380.3" cy="90.2" r="1.3" fill="#7fb4bf" opacity="0.47"/>
+          <circle class="dot" style="--d:0.511s" cx="383.1" cy="84.0" r="1.3" fill="#7fb4bf" opacity="0.47"/>
+          <circle class="dot" style="--d:0.515s" cx="385.9" cy="96.4" r="1.3" fill="#7fb4bf" opacity="0.46"/>
+          <circle class="dot" style="--d:0.519s" cx="388.8" cy="99.8" r="1.3" fill="#7fb4bf" opacity="0.46"/>
+          <circle class="dot" style="--d:0.523s" cx="391.6" cy="87.1" r="1.3" fill="#7fb4bf" opacity="0.46"/>
+          <circle class="dot" style="--d:0.527s" cx="394.4" cy="81.0" r="1.2" fill="#7fb4bf" opacity="0.46"/>
+          <circle class="dot" style="--d:0.531s" cx="397.2" cy="89.1" r="1.2" fill="#7fb4bf" opacity="0.45"/>
+          <circle class="dot" style="--d:0.535s" cx="400.0" cy="89.1" r="1.2" fill="#7fb4bf" opacity="0.45"/>
+          <circle class="dot" style="--d:0.539s" cx="402.8" cy="88.1" r="1.2" fill="#7fb4bf" opacity="0.45"/>
+          <circle class="dot" style="--d:0.543s" cx="405.6" cy="98.7" r="1.2" fill="#7fb4bf" opacity="0.45"/>
+          <circle class="dot" style="--d:0.547s" cx="408.4" cy="83.7" r="1.2" fill="#7fb4bf" opacity="0.44"/>
+          <circle class="dot" style="--d:0.551s" cx="411.2" cy="97.7" r="1.2" fill="#7fb4bf" opacity="0.44"/>
+          <circle class="dot" style="--d:0.555s" cx="414.0" cy="82.4" r="1.2" fill="#7fb4bf" opacity="0.44"/>
+          <circle class="dot" style="--d:0.559s" cx="416.8" cy="85.3" r="1.2" fill="#7fb4bf" opacity="0.44"/>
+          <circle class="dot" style="--d:0.563s" cx="419.5" cy="93.7" r="1.2" fill="#7fb4bf" opacity="0.43"/>
+          <circle class="dot" style="--d:0.567s" cx="422.3" cy="96.6" r="1.2" fill="#7fb4bf" opacity="0.43"/>
+          <circle class="dot" style="--d:0.571s" cx="425.1" cy="94.9" r="1.2" fill="#7fb4bf" opacity="0.43"/>
+          <circle class="dot" style="--d:0.575s" cx="427.9" cy="92.0" r="1.2" fill="#7fb4bf" opacity="0.43"/>
+          <circle class="dot" style="--d:0.579s" cx="430.6" cy="90.8" r="1.1" fill="#7fb4bf" opacity="0.43"/>
+          <circle class="dot" style="--d:0.583s" cx="433.4" cy="90.8" r="1.1" fill="#7fb4bf" opacity="0.42"/>
+          <circle class="dot" style="--d:0.587s" cx="436.2" cy="93.2" r="1.1" fill="#7fb4bf" opacity="0.42"/>
+          <circle class="dot" style="--d:0.591s" cx="438.9" cy="89.0" r="1.1" fill="#7fb4bf" opacity="0.42"/>
+          <circle class="dot" style="--d:0.595s" cx="441.7" cy="91.5" r="1.1" fill="#7fb4bf" opacity="0.42"/>
+          <circle class="dot" style="--d:0.599s" cx="444.4" cy="93.0" r="1.1" fill="#7fb4bf" opacity="0.41"/>
+          <circle class="dot" style="--d:0.603s" cx="447.2" cy="90.0" r="1.1" fill="#7fb4bf" opacity="0.41"/>
+          <circle class="dot" style="--d:0.607s" cx="449.9" cy="94.0" r="1.1" fill="#7fb4bf" opacity="0.41"/>
+          <circle class="dot" style="--d:0.61s" cx="452.7" cy="92.9" r="1.1" fill="#7fb4bf" opacity="0.41"/>
+          <circle class="dot" style="--d:0.614s" cx="455.4" cy="100.2" r="1.1" fill="#7fb4bf" opacity="0.4"/>
+          <circle class="dot" style="--d:0.618s" cx="458.1" cy="91.6" r="1.1" fill="#7fb4bf" opacity="0.4"/>
+          <circle class="dot" style="--d:0.622s" cx="460.9" cy="87.9" r="1.1" fill="#7fb4bf" opacity="0.4"/>
+          <circle class="dot" style="--d:0.626s" cx="463.6" cy="88.2" r="1.1" fill="#7fb4bf" opacity="0.4"/>
+          <circle class="dot" style="--d:0.63s" cx="466.3" cy="89.9" r="1.1" fill="#7fb4bf" opacity="0.4"/>
+          <circle class="dot" style="--d:0.634s" cx="469.0" cy="94.4" r="1.1" fill="#7fb4bf" opacity="0.39"/>
+          <circle class="dot" style="--d:0.638s" cx="471.8" cy="88.4" r="1.1" fill="#7fb4bf" opacity="0.39"/>
+          <circle class="dot" style="--d:0.641s" cx="474.5" cy="91.8" r="1.1" fill="#7fb4bf" opacity="0.39"/>
+          <circle class="dot" style="--d:0.645s" cx="477.2" cy="98.6" r="1.1" fill="#7fb4bf" opacity="0.39"/>
+          <circle class="dot" style="--d:0.649s" cx="479.9" cy="78.2" r="1.1" fill="#7fb4bf" opacity="0.39"/>
+          <circle class="dot" style="--d:0.653s" cx="482.6" cy="84.9" r="1.1" fill="#7fb4bf" opacity="0.38"/>
+          <circle class="dot" style="--d:0.657s" cx="485.3" cy="91.1" r="1.1" fill="#7fb4bf" opacity="0.38"/>
+          <circle class="dot" style="--d:0.661s" cx="488.0" cy="91.8" r="1.1" fill="#7fb4bf" opacity="0.38"/>
+          <circle class="dot" style="--d:0.665s" cx="490.7" cy="91.1" r="1.1" fill="#7fb4bf" opacity="0.38"/>
+          <circle class="dot" style="--d:0.668s" cx="493.4" cy="88.1" r="1.1" fill="#7fb4bf" opacity="0.38"/>
+          <circle class="dot" style="--d:0.672s" cx="496.1" cy="92.8" r="1.1" fill="#7fb4bf" opacity="0.37"/>
+          <circle class="dot" style="--d:0.676s" cx="498.8" cy="91.2" r="1.1" fill="#7fb4bf" opacity="0.37"/>
+          <circle class="dot" style="--d:0.68s" cx="501.5" cy="87.8" r="1.1" fill="#7fb4bf" opacity="0.37"/>
+          <circle class="dot" style="--d:0.684s" cx="504.2" cy="100.2" r="1.1" fill="#7fb4bf" opacity="0.37"/>
+          <circle class="dot" style="--d:0.688s" cx="506.9" cy="91.5" r="1.1" fill="#7fb4bf" opacity="0.37"/>
+          <circle class="dot" style="--d:0.691s" cx="509.5" cy="87.7" r="1.1" fill="#7fb4bf" opacity="0.36"/>
+          <circle class="dot" style="--d:0.695s" cx="512.2" cy="89.6" r="1.1" fill="#7fb4bf" opacity="0.36"/>
+          <circle class="dot" style="--d:0.699s" cx="514.9" cy="89.1" r="1.1" fill="#7fb4bf" opacity="0.36"/>
+          <circle class="dot" style="--d:0.703s" cx="517.6" cy="89.7" r="1.1" fill="#7fb4bf" opacity="0.36"/>
+          <circle class="dot" style="--d:0.707s" cx="520.2" cy="79.2" r="1.1" fill="#7fb4bf" opacity="0.36"/>
+          <circle class="dot" style="--d:0.71s" cx="522.9" cy="88.1" r="1.1" fill="#7fb4bf" opacity="0.35"/>
+          <circle class="dot" style="--d:0.714s" cx="525.6" cy="93.9" r="1.1" fill="#7fb4bf" opacity="0.35"/>
+          <circle class="dot" style="--d:0.718s" cx="528.2" cy="85.5" r="1.1" fill="#7fb4bf" opacity="0.35"/>
+          <circle class="dot" style="--d:0.722s" cx="530.9" cy="89.7" r="1.1" fill="#7fb4bf" opacity="0.35"/>
+          <circle class="dot" style="--d:0.726s" cx="533.6" cy="93.6" r="1.1" fill="#7fb4bf" opacity="0.35"/>
+          <circle class="dot" style="--d:0.729s" cx="536.2" cy="93.2" r="1.1" fill="#7fb4bf" opacity="0.34"/>
+          <circle class="dot" style="--d:0.733s" cx="538.9" cy="95.5" r="1.1" fill="#7fb4bf" opacity="0.34"/>
+          <circle class="dot" style="--d:0.737s" cx="541.5" cy="83.8" r="1.1" fill="#7fb4bf" opacity="0.34"/>
+          <circle class="dot" style="--d:0.741s" cx="544.2" cy="88.7" r="1.1" fill="#7fb4bf" opacity="0.34"/>
+          <circle class="dot" style="--d:0.745s" cx="546.8" cy="88.8" r="1.1" fill="#7fb4bf" opacity="0.34"/>
+          <circle class="dot" style="--d:0.748s" cx="549.5" cy="92.2" r="1.1" fill="#7fb4bf" opacity="0.34"/>
+          <circle class="dot" style="--d:0.752s" cx="552.1" cy="93.8" r="1.1" fill="#7fb4bf" opacity="0.33"/>
+          <circle class="dot" style="--d:0.756s" cx="554.7" cy="80.7" r="1.1" fill="#7fb4bf" opacity="0.33"/>
+          <circle class="dot" style="--d:0.76s" cx="557.4" cy="93.7" r="1.1" fill="#7fb4bf" opacity="0.33"/>
+          <circle class="dot" style="--d:0.763s" cx="560.0" cy="85.1" r="1.1" fill="#7fb4bf" opacity="0.33"/>
+          <circle class="dot" style="--d:0.767s" cx="562.6" cy="92.3" r="1.1" fill="#7fb4bf" opacity="0.33"/>
+          <circle class="dot" style="--d:0.771s" cx="565.3" cy="85.0" r="1.1" fill="#7fb4bf" opacity="0.33"/>
+          <circle class="dot" style="--d:0.775s" cx="567.9" cy="90.6" r="1.1" fill="#7fb4bf" opacity="0.32"/>
+          <circle class="dot" style="--d:0.778s" cx="570.5" cy="93.9" r="1.1" fill="#7fb4bf" opacity="0.32"/>
+          <circle class="dot" style="--d:0.782s" cx="573.1" cy="89.5" r="1.1" fill="#7fb4bf" opacity="0.32"/>
+          <circle class="dot" style="--d:0.786s" cx="575.8" cy="90.6" r="1.1" fill="#7fb4bf" opacity="0.32"/>
+          <circle class="dot" style="--d:0.789s" cx="578.4" cy="92.5" r="1.1" fill="#7fb4bf" opacity="0.32"/>
+          <circle class="dot" style="--d:0.793s" cx="581.0" cy="90.4" r="1.1" fill="#7fb4bf" opacity="0.32"/>
+          <circle class="dot" style="--d:0.797s" cx="583.6" cy="89.7" r="1.1" fill="#7fb4bf" opacity="0.31"/>
+          <circle class="dot" style="--d:0.801s" cx="586.2" cy="94.7" r="1.1" fill="#7fb4bf" opacity="0.31"/>
+          <circle class="dot" style="--d:0.804s" cx="588.8" cy="93.2" r="1.1" fill="#7fb4bf" opacity="0.31"/>
+          <circle class="dot" style="--d:0.808s" cx="591.4" cy="89.1" r="1.1" fill="#7fb4bf" opacity="0.31"/>
+          <circle class="dot" style="--d:0.812s" cx="594.1" cy="98.3" r="1.1" fill="#7fb4bf" opacity="0.31"/>
+          <circle class="dot" style="--d:0.815s" cx="596.7" cy="86.6" r="1.1" fill="#7fb4bf" opacity="0.31"/>
+          <circle class="dot" style="--d:0.819s" cx="599.3" cy="92.7" r="1.1" fill="#7fb4bf" opacity="0.3"/>
+          <circle class="dot" style="--d:0.823s" cx="601.9" cy="89.2" r="1.1" fill="#7fb4bf" opacity="0.3"/>
+          <circle class="dot" style="--d:0.827s" cx="604.5" cy="90.4" r="1.1" fill="#7fb4bf" opacity="0.3"/>
+          <circle class="dot" style="--d:0.83s" cx="607.1" cy="92.0" r="1.1" fill="#7fb4bf" opacity="0.3"/>
+          <circle class="dot" style="--d:0.834s" cx="609.6" cy="90.6" r="1.1" fill="#7fb4bf" opacity="0.3"/>
+          <circle class="dot" style="--d:0.838s" cx="612.2" cy="91.8" r="1.1" fill="#7fb4bf" opacity="0.3"/>
+          <circle class="dot" style="--d:0.841s" cx="614.8" cy="85.7" r="1.1" fill="#7fb4bf" opacity="0.3"/>
+          <circle class="dot" style="--d:0.845s" cx="617.4" cy="85.8" r="1.1" fill="#7fb4bf" opacity="0.29"/>
+          <circle class="dot" style="--d:0.849s" cx="620.0" cy="91.7" r="1.1" fill="#7fb4bf" opacity="0.29"/>
+          <circle class="dot" style="--d:0.852s" cx="622.6" cy="87.4" r="1.1" fill="#7fb4bf" opacity="0.29"/>
+          <circle class="dot" style="--d:0.856s" cx="625.2" cy="87.2" r="1.1" fill="#7fb4bf" opacity="0.29"/>
+          <circle class="dot" style="--d:0.86s" cx="627.7" cy="86.1" r="1.1" fill="#7fb4bf" opacity="0.29"/>
+          <circle class="dot" style="--d:0.863s" cx="630.3" cy="93.4" r="1.1" fill="#7fb4bf" opacity="0.29"/>
+          <circle class="dot" style="--d:0.867s" cx="632.9" cy="92.0" r="1.1" fill="#7fb4bf" opacity="0.28"/>
+          <circle class="dot" style="--d:0.871s" cx="635.5" cy="93.8" r="1.1" fill="#7fb4bf" opacity="0.28"/>
+          <circle class="dot" style="--d:0.874s" cx="638.0" cy="87.6" r="1.1" fill="#7fb4bf" opacity="0.28"/>
+          <circle class="dot" style="--d:0.878s" cx="640.6" cy="90.0" r="1.1" fill="#7fb4bf" opacity="0.28"/>
+          <circle class="dot" style="--d:0.882s" cx="643.2" cy="87.1" r="1.1" fill="#7fb4bf" opacity="0.28"/>
+          <circle class="dot" style="--d:0.885s" cx="645.8" cy="91.9" r="1.1" fill="#7fb4bf" opacity="0.28"/>
+          <circle class="dot" style="--d:0.889s" cx="648.3" cy="94.0" r="1.1" fill="#7fb4bf" opacity="0.28"/>
+          <circle class="dot" style="--d:0.893s" cx="650.9" cy="87.8" r="1.1" fill="#7fb4bf" opacity="0.27"/>
+          <circle class="dot" style="--d:0.896s" cx="653.4" cy="93.8" r="1.1" fill="#7fb4bf" opacity="0.27"/>
+    </svg>
+    <img class="shot fadeup" src="img/prodx2-500.webp" width="350" height="256" alt="Audifort">
+    <div class="cap"><b>Constant, intrusive</b><span>Background, ignorable</span></div>
+  </figure>
+</div></div></section>
+<div class="vlabel"><div class="wrap-wide"><b>Opção H</b><span>Split diagonal · antes e depois na mesma imagem</span><button class="replay" onclick="replay(this)">↻ rever animação</button></div></div><div class="vnote"><div class="wrap-wide">O painel é cortado na diagonal: lado âmbar agitado com barras altas, lado teal calmo com barras baixas, produto na junção. É a única opção que mostra os dois estados ao mesmo tempo em vez de um decaimento.</div></div>
+<section class="vH"><div class="wrap-wide"><div class="hgrid">
+  <div><div class="eyebrow">Evidence review · August 2026</div><h1>Vitamins for tinnitus: what the research actually shows</h1><p class="lead">Four nutrients get recommended for ear ringing over and over. Only one of them has research worth taking seriously — and it's not the one on the front of most bottles.</p><a class="btn" href="#">See the Audifort formula<span class="btn__sub">Full ingredient amounts on the official site</span></a><span class="btn-note">Opens in a new tab — this page stays open</span></div>
+  <figure class="panel">
+    <div class="halves">
+      <div class="side left"></div><div class="side right"></div>
+      <svg class="bars" viewBox="0 0 680 192" preserveAspectRatio="none" aria-hidden="true">
+          <rect class="bar" style="--d:0.0s" x="24.0" y="59.0" width="4" height="74.0" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.012s" x="35.0" y="41.2" width="4" height="109.7" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.024s" x="46.1" y="54.8" width="4" height="82.5" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.036s" x="57.1" y="62.3" width="4" height="67.4" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.048s" x="68.2" y="39.4" width="4" height="113.2" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.06s" x="79.2" y="59.4" width="4" height="73.3" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.072s" x="90.2" y="65.6" width="4" height="60.9" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.084s" x="101.3" y="42.9" width="4" height="106.2" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.096s" x="112.3" y="53.3" width="4" height="85.4" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.108s" x="123.4" y="68.9" width="4" height="54.2" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.12s" x="134.4" y="50.5" width="4" height="91.0" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.132s" x="145.4" y="51.3" width="4" height="89.4" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.144s" x="156.5" y="71.7" width="4" height="48.7" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.156s" x="167.5" y="60.4" width="4" height="71.2" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.168s" x="178.6" y="53.5" width="4" height="85.0" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.18s" x="189.6" y="73.4" width="4" height="45.3" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.192s" x="200.6" y="70.8" width="4" height="50.4" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.204s" x="211.7" y="59.2" width="4" height="73.6" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.216s" x="222.7" y="74.9" width="4" height="42.1" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.228s" x="233.8" y="74.6" width="4" height="42.7" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.24s" x="244.8" y="67.1" width="4" height="57.8" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.252s" x="255.8" y="76.6" width="4" height="38.8" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.264s" x="266.9" y="71.5" width="4" height="49.1" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.276s" x="277.9" y="75.7" width="4" height="40.6" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.288s" x="289.0" y="78.5" width="4" height="35.1" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.3s" x="300.0" y="70.6" width="4" height="50.8" rx="2" fill="#c2760a"/>
+          <rect class="bar" style="--d:0.0s" x="330.0" y="88.0" width="4" height="16.0" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.012s" x="341.2" y="84.3" width="4" height="23.4" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.024s" x="352.5" y="87.3" width="4" height="17.4" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.036s" x="363.7" y="89.0" width="4" height="14.1" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.048s" x="375.0" y="84.4" width="4" height="23.3" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.06s" x="386.2" y="88.6" width="4" height="14.9" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.072s" x="397.4" y="89.9" width="4" height="12.2" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.084s" x="408.7" y="85.5" width="4" height="21.1" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.096s" x="419.9" y="87.6" width="4" height="16.7" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.108s" x="431.2" y="90.8" width="4" height="10.5" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.12s" x="442.4" y="87.3" width="4" height="17.4" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.132s" x="453.7" y="87.6" width="4" height="16.9" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.144s" x="464.9" y="91.5" width="4" height="9.1" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.156s" x="476.1" y="89.4" width="4" height="13.1" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.168s" x="487.4" y="88.3" width="4" height="15.5" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.18s" x="498.6" y="91.9" width="4" height="8.1" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.192s" x="509.9" y="91.5" width="4" height="9.0" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.204s" x="521.1" y="89.5" width="4" height="12.9" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.216s" x="532.3" y="92.3" width="4" height="7.3" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.228s" x="543.6" y="92.3" width="4" height="7.3" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.24s" x="554.8" y="91.1" width="4" height="9.8" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.252s" x="566.1" y="92.8" width="4" height="6.5" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.264s" x="577.3" y="92.0" width="4" height="8.1" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.276s" x="588.6" y="92.7" width="4" height="6.6" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.288s" x="599.8" y="93.0" width="4" height="6.0" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.3s" x="611.0" y="92.0" width="4" height="8.1" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.312s" x="622.3" y="93.0" width="4" height="6.0" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.324s" x="633.5" y="93.0" width="4" height="6.0" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.336s" x="644.8" y="92.3" width="4" height="7.4" rx="2" fill="#0d7d91"/>
+          <rect class="bar" style="--d:0.348s" x="656.0" y="93.0" width="4" height="6.0" rx="2" fill="#0d7d91"/>
+      </svg>
+      <img class="shot fadeup" src="img/prodx2-500.webp" width="350" height="256" alt="Audifort">
+    </div>
+    <div class="tags"><b>Loud enough to notice</b><s>Quiet enough to ignore</s></div>
+  </figure>
+</div></div></section>
+
+<div style="padding:56px 22px;text-align:center;color:#6b777e;font-size:.9rem">
+  Rodada 1 (A–D) está em <code>hero-variants.html</code>. Todas respeitam <code>prefers-reduced-motion</code>.
+</div>
+<script>
+function replay(btn){
+  var sec=btn.closest('.vlabel').nextElementSibling.nextElementSibling;
+  sec.querySelectorAll('.bar,.dot,.plotline,.fadeup,.marks circle').forEach(function(el){
+    var a=el.style.animation; el.style.animation='none'; el.getBoundingClientRect(); el.style.animation=a||'';
+  });
+}
+document.querySelectorAll('.vF .marks circle').forEach(function(c,i){c.style.animationDelay=(0.9+i*0.09)+'s';});
+</script>
+</body></html>
