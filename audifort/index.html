@@ -25,6 +25,33 @@
       });
     });
   </script>
+  <!-- gclid pass-through. Required by the ClickBank -> Google Ads integration: without the
+       gclid on the hoplink, ClickBank cannot match a sale back to the ad click and the
+       conversion is never attributed. Stored in sessionStorage so it survives navigation
+       within the site before the visitor clicks out. -->
+  <script>
+    (function(){
+      var KEY = 'sdr_gclid';
+      function read(){
+        try {
+          var q = new URLSearchParams(window.location.search);
+          var g = q.get('gclid');
+          if (g) { try { sessionStorage.setItem(KEY, g); } catch(e){} return g; }
+          try { return sessionStorage.getItem(KEY); } catch(e){ return null; }
+        } catch(e){ return null; }
+      }
+      document.addEventListener('DOMContentLoaded', function(){
+        var g = read();
+        if (!g) return;
+        document.querySelectorAll('a[data-affiliate]').forEach(function(a){
+          var href = a.getAttribute('href');
+          if (!href || href.indexOf('/go/') !== 0) return;
+          if (href.indexOf('gclid=') !== -1) return;
+          a.setAttribute('href', href + (href.indexOf('?') === -1 ? '?' : '&') + 'gclid=' + encodeURIComponent(g));
+        });
+      });
+    })();
+  </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tinnitus Supplements — And What Else You Can Do About the Ringing (2026)</title>
