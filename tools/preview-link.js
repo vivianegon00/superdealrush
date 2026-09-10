@@ -28,11 +28,12 @@ const res = {
       console.log(`status   : ${this.statusCode}`);
       console.log(`destino  : ${dest}`);
       const parsed = new URL(dest);
-      const ext = parsed.searchParams.get('extclid');
-      console.log(`extclid  : ${ext || '(nenhum)'}`);
-      if (ext) {
-        console.log(`  bate com o gclid original? ${ext === gclid ? 'SIM' : 'NAO — foi sanitizado'}`);
-        console.log(`  tamanho: ${ext.length} / 256`);
+      const passed = parsed.searchParams.get('gclid');
+      console.log(`gclid    : ${passed || '(nenhum)'}   <- e ESTE que a integracao Google Ads exige`);
+      console.log(`extclid  : ${parsed.searchParams.get('extclid') || '(nenhum)'}`);
+      if (passed) {
+        console.log(`  bate com o gclid original? ${passed === gclid ? 'SIM' : 'NAO — foi sanitizado'}`);
+        console.log(`  tamanho: ${passed.length} / 256`);
       }
     } else {
       console.log(`status   : ${this.statusCode}`);

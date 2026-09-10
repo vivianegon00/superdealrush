@@ -7,14 +7,24 @@
 // /go/audifort desde 08/09/2026 — faltava esta metade.
 //
 // COMO FUNCIONA
-// A ClickBank tem um parâmetro dedicado a click id de terceiros: `extclid` (máx. 256 caracteres).
+// A conta usa o template "Google Ads" do Postback/Pixels da ClickBank (integração
+// "Google Ads - Audifort", role Affiliate, Customer ID 617-242-4041, nível Global, eventos
+// Initial Purchase + Upsell Purchase → conversion action "ClickBank Sale (Import)").
+// Esse template manda a conversão direto pela Conversions API do Google — não há upload manual.
+//
+// O template exige o click id no parâmetro **`gclid`** da hoplink. Não é `tid` e não é `extclid`.
+// A própria tela de edição da integração avisa: "This integration requires the Google Click ID
+// (gclid) is passed to your ClickBank affiliate tracking link using 'gclid' URL parameter".
+// Doc: https://support.clickbank.com/en/articles/10535368-tracking-integration-google-ads
+//
 // Caracteres válidos nos parâmetros de tracking: a-z A-Z 0-9 espaço _ - +
 // O gclid é base64url (A-Za-z0-9-_), então cabe inteiro, sem encoding.
-// Doc: https://support.clickbank.com/en/articles/10535262-affiliate-tracking-parameters
 //
-// Para receber o extclid de volta na venda, o postback S2S da ClickBank precisa incluir o token
-// do extclid na URL configurada (Accounts > Integrations > Postback). Sem isso, o dado é gravado
-// na ClickBank mas não chega ao Google Ads.
+// Mandamos `extclid` junto só para o valor aparecer no relatório de transações da ClickBank.
+// Quem faz a atribuição funcionar é o `gclid`.
+//
+// PRÉ-REQUISITO: auto-tagging LIGADO no Google Ads. Sem isso o Google não anexa ?gclid= na URL
+// de destino, o JS da presell não tem o que capturar, e nada disso funciona.
 
 const OFFERS = {
   audifort: {
@@ -53,9 +63,12 @@ module.exports = (req, res) => {
   if (clickId) {
     const clean = sanitizeClickId(clickId);
     if (clean) {
+      // gclid é o que a integração Google Ads da ClickBank exige. Sem ele, sem conversão.
+      dest.searchParams.set('gclid', clean);
+      // extclid é redundante para a atribuição, mas faz o valor aparecer no relatório da ClickBank.
       dest.searchParams.set('extclid', clean);
       dest.searchParams.set('traffic_type', 'paid');
-      dest.searchParams.set('traffic_source', 'googleAds');
+      dest.searchParams.set('traffic_source', 'google');
       dest.searchParams.set('campaign', offer.campaign);
     }
   } else {
